@@ -1,0 +1,99 @@
+{
+ "doctype": "DocType",
+ "name": "Driver Settlement",
+ "module": "SBT",
+ "custom": 0,
+ "istable": 0,
+ "issingle": 0,
+ "is_submittable": 0,
+ "track_changes": 1,
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "booking",
+   "fieldtype": "Link",
+   "label": "Booking",
+   "options": "Booking",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Driver",
+   "fetch_from": "booking.driver",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "total_settlement_amount",
+   "fieldtype": "Currency",
+   "label": "Total Settlement Amount",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "driver_advance_deducted",
+   "fieldtype": "Currency",
+   "label": "Driver Advance Deducted",
+   "default": 0
+  },
+  {
+   "fieldname": "remaining_amount",
+   "fieldtype": "Currency",
+   "label": "Remaining Amount",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "settlement_date",
+   "fieldtype": "Date",
+   "label": "Settlement Date",
+   "default": "Today"
+  },
+  {
+   "fieldname": "settlement_status",
+   "fieldtype": "Select",
+   "label": "Settlement Status",
+   "options": "Pending\nCompleted",
+   "default": "Pending",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "SBT Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "SBT Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1
+  },
+  {
+   "role": "SBT Driver",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1
+  }
+ ],
+ "autoname": "format:DSET-{#####}"
+}
